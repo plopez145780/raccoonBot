@@ -1,11 +1,19 @@
 import discord
+import json
 
 from discord.ext import commands
+
+
+# Recupération des token dans le conteneur keystore
+with open('keystore.json', 'r') as keystore:
+    keys = json.load(keystore)
+type(keys)
+
 
 prefix="rcn_"
 bot=commands.Bot(command_prefix=prefix)
 
-token="mon_token_secret"
+token=keys["discord"]["token"]
 
 @bot.event
 async def on_ready():
